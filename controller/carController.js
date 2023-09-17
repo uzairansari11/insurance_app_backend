@@ -5,11 +5,11 @@ const getCarDetails = async (req, res) => {
 	console.log("Car number:", carNumber);
 
 	try {
-		const carData = await CarModel.find({ car_number: carNumber });
+		const carData = await CarModel.findOne({ car_number: carNumber });
 		if (carData.length) {
 			res.status(200).json({ success: true, data: carData });
 		} else {
-			res.status(404).json({ success: false, message: "No Data Found" });
+			res.status(404).json({ success: false, message: "Car Data Not Found" });
 		}
 	} catch (error) {
 		res.status(500).json({ success: false, error: "Internal server error" });
