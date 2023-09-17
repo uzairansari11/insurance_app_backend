@@ -7,12 +7,12 @@ const getCarDetails = async (req, res) => {
 	try {
 		const carData = await CarModel.find({ car_number: carNumber });
 		if (carData.length) {
-			res.status(200).send({ carData });
+			res.status(200).json({ success: true, data: carData });
 		} else {
-			res.status(404).send({ message: "No Data Found" });
+			res.status(404).json({ success: false, message: "No Data Found" });
 		}
 	} catch (error) {
-		res.status(500).send({ message: "Error: " + error });
+		res.status(500).json({ success: false, error: "Internal server error" });
 	}
 };
 
@@ -21,9 +21,9 @@ const postCarDetails = async (req, res) => {
 		const carData = req.body;
 		const newCar = new CarModel(carData);
 		const savedCar = await newCar.save();
-		res.status(201).json(savedCar);
+		res.status(201).json({ success: true, data: savedCar });
 	} catch (error) {
-		res.status(500).json({ error: "Internal server error" });
+		res.status(500).json({ success: false, error: "Internal server error" });
 	}
 };
 
