@@ -6,7 +6,8 @@ const getCarDetails = async (req, res) => {
 
 	try {
 		const carData = await CarModel.findOne({ car_number: carNumber });
-		if (carData.length) {
+		if (carData) {
+			// Check if carData is truthy (not null)
 			res.status(200).json({ success: true, data: carData });
 		} else {
 			res.status(404).json({ success: false, message: "Car Data Not Found" });
