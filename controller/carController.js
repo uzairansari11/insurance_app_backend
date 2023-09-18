@@ -5,9 +5,9 @@ const getCarDetails = async (req, res) => {
 	console.log("Car number:", vehicle_number);
 
 	try {
-		const carData = await VehicleModel.findOne(vehicle_number);
-		if (carData) {
-			res.status(200).json({ success: true, data: carData });
+		const data = await VehicleModel.find(vehicle_number);
+		if (data.length) {
+			res.status(200).json(data);
 		} else {
 			res.status(404).json({ success: false, message: "Car Data Not Found" });
 		}
