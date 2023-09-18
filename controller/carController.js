@@ -1,8 +1,7 @@
 const { VehicleModel } = require("../model/carModel");
 
 const getCarDetails = async (req, res) => {
-	const vehicle_number = req.query.car_number; // Get the car_number from query parameters
-	console.log("Car number:", vehicle_number);
+	const vehicle_number = req.query.vehicle_number; 
 
 	try {
 		const data = await VehicleModel.find(vehicle_number);
