@@ -1,10 +1,10 @@
 const { VehicleModel } = require("../model/carModel");
 
 const getCarDetails = async (req, res) => {
-	const vehicle_number = req.query.vehicle_number; 
+	const vehicle_number = req.query.vehicle_number;
 
 	try {
-		const data = await VehicleModel.find(vehicle_number);
+		const data = await VehicleModel.find({ vehicle_number: vehicle_number });
 		if (data.length) {
 			res.status(200).json(data);
 		} else {
