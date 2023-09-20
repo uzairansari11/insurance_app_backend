@@ -3,6 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 const { connection } = require("./config/db");
 const { carRouter } = require("./routes/carRoutes");
+const { bikeRouter } = require("./routes/bikeRoutes");
 const app = express();
 
 /*  middleware */
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/car", carRouter);
+app.use("/bike", bikeRouter);
 
 /* Not Found Route */
 app.use((req, res) => {
