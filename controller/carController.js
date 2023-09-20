@@ -1,10 +1,10 @@
-const { VehicleModel } = require("../model/carModel");
+const { CarModel } = require("../model/carModel");
 
 const getCarDetails = async (req, res) => {
 	const vehicle_number = req.query.vehicle_number;
 
 	try {
-		const data = await VehicleModel.find({ vehicle_number: vehicle_number });
+		const data = await CarModel.find({ vehicle_number: vehicle_number });
 		if (data.length) {
 			res.status(200).json(data);
 		} else {
@@ -18,7 +18,7 @@ const getCarDetails = async (req, res) => {
 const postCarDetails = async (req, res) => {
 	try {
 		const carData = req.body;
-		const newCar = new VehicleModel(carData);
+		const newCar = new CarModel(carData);
 		const savedCar = await newCar.save();
 		res.status(201).json({ success: true, data: savedCar });
 	} catch (error) {

@@ -22,7 +22,7 @@ const pucSchema = mongoose.Schema({
 	expiry: { type: Boolean, default: false },
 });
 
-const vehicleSchema = mongoose.Schema({
+const carSchema = mongoose.Schema({
 	vehicle_number: String,
 	vehicle_owner: String,
 	model_name: String,
@@ -36,6 +36,6 @@ const vehicleSchema = mongoose.Schema({
 	puc_entries: [pucSchema],
 });
 
-const VehicleModel = mongoose.model("Vehicle", vehicleSchema);
+const CarModel = mongoose.model("car", carSchema);
 
-module.exports = { VehicleModel };
+module.exports = { CarModel };
