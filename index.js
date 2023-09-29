@@ -4,6 +4,7 @@ const cors = require("cors");
 const { connection } = require("./config/db");
 const { carRouter } = require("./routes/carRoutes");
 const { bikeRouter } = require("./routes/bikeRoutes");
+const { userRouter } = require("./routes/userRoutes");
 const app = express();
 
 /*  middleware */
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/car", carRouter);
 app.use("/bike", bikeRouter);
+app.use("/user", userRouter);
 
 /* Not Found Route */
 app.use((req, res) => {
